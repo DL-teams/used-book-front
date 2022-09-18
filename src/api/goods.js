@@ -61,7 +61,7 @@ export const payMent = (params) => {
 }
 // 获取用户订单
 export const orderList = (params) => {
-  return http.fetchGet('/member/orderList', params)
+  return http.fetchGet('/oms/order-list', params)
 }
 // 获取单个订单详情
 export const getOrderDet = (params) => {
@@ -77,7 +77,7 @@ export const productDet = (params) => {
 }
 // 删除订单
 export const delOrder = (params) => {
-  return http.fetchGet('/member/delOrder', params)
+  return http.fetchGet('/oms/order-delete', params)
 }
 // 商品列表
 export const getSearch = (params) => {
