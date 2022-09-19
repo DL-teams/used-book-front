@@ -155,6 +155,14 @@ export default {
         if (res.result === 1) {
           this.messageSuccess()
           this.toLogin()
+        } else if (res.result === 2) {
+          this.$notify({
+            title: '提示',
+            message: '用户已存在，请重新输入',
+            type: 'warning'
+          })
+          this.registxt = '注册'
+          return false
         } else {
           this.message(res.message)
           this.registxt = '注册'

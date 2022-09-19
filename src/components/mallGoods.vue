@@ -13,7 +13,7 @@
           <a @click="openProduct(msg.productId)">
             <y-button text="查看详情" style="margin: 0 5px"></y-button>
           </a>
-          <y-button text="加入购物车"
+          <y-button v-show="msg.panelId !== 2" text="加入购物车"
                     style="margin: 0 5px"
                     @btnClick="addCart(msg.productId,msg.salePrice,msg.productName,msg.productImageBig)"
                     classStyle="main-btn"
