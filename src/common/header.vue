@@ -24,7 +24,7 @@
               </div>
               <router-link to="/goods"><a @click="changePage(2)">二手商品</a></router-link>
               <router-link to="/officialgoods"><a @click="changePage(4)">官方商品</a></router-link>
-              <router-link to="/officialgoods"><a @click="changePage(5)">论坛</a></router-link>
+              <router-link to="/forum"><a @click="changePage(5)">论坛</a></router-link>
               <!-- <router-link to="/">Smartisan M1 / M1L</router-link>
               <router-link to="/">Smartisan OS</router-link>
               <router-link to="/">欢喜云</router-link>

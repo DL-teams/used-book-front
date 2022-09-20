@@ -9,6 +9,10 @@ const OfficialGoodS = () => import('/page/Goods/officialgoods.vue')
 const goodsDetails = () => import('/page/Goods/goodsDetails.vue')
 const OfficialGoodsDetails = () => import('/page/Goods/officialgoodsDetails.vue')
 const Cart = () => import('/page/Cart/cart.vue')
+const Forum = () => import('/page/Forum/forum.vue')
+const ForumDetail = () => import('/page/Forum/detail.vue')
+const forumAdd = () => import('/page/Forum/add.vue')
+const forumEdit = () => import('/page/Forum/edit.vue')
 const order = () => import('/page/Order/order.vue')
 const user = () => import('/page/User/user.vue')
 const orderList = () => import('/page/User/children/order.vue')
@@ -45,7 +49,11 @@ export default new Router({
         {path: 'officialgoodsDetails', name: 'officialgoodsDetails', component: OfficialGoodsDetails},
         {path: 'thanks', name: 'thanks', component: Thanks},
         {path: '/refreshgoods', name: 'refreshgoods', component: RefreshGoods},
-        {path: '/refreshofficialgoods', name: 'refreshofficialgoods', component: RefreshOfficialGoods}
+        {path: '/refreshofficialgoods', name: 'refreshofficialgoods', component: RefreshOfficialGoods},
+        {path: 'forum', name: 'forum', component: Forum},
+        {path: 'forumDetail', name: 'forumDetail', component: ForumDetail},
+        {path: 'forumAdd', name: 'forumAdd', component: forumAdd},
+        {path: 'forumEdit', name: 'forumEdit', component: forumEdit}
       ]
     },
     {path: '/login', name: 'login', component: Login},

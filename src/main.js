@@ -6,7 +6,7 @@ import VueLazyload from 'vue-lazyload'
 import infiniteScroll from 'vue-infinite-scroll'
 import VueCookie from 'vue-cookie'
 import { userInfo } from './api'
-import { Button, Pagination, Checkbox, Icon, Autocomplete, Loading, Message, Notification, Steps, Step, Table, TableColumn, Input, Dialog, Select, Option, Upload } from 'element-ui'
+import { Button, Pagination, Checkbox, Icon, Autocomplete, Loading, Message, Notification, Steps, Step, Table, TableColumn, Input, Dialog, Select, Option, Upload, Tabs, Card, TabPane, Form, FormItem } from 'element-ui'
 import { getStore } from '/utils/storage'
 import VueContentPlaceholders from 'vue-content-placeholders'
 Vue.use(VueContentPlaceholders)
@@ -24,6 +24,11 @@ Vue.use(Dialog)
 Vue.use(Select)
 Vue.use(Option)
 Vue.use(Upload)
+Vue.use(Tabs)
+Vue.use(TabPane)
+Vue.use(Card)
+Vue.use(Form)
+Vue.use(FormItem)
 Vue.use(Loading.directive)
 Vue.prototype.$loading = Loading.service
 Vue.prototype.$notify = Notification
@@ -37,7 +42,7 @@ Vue.use(VueLazyload, {
   // attempt: 1
 })
 Vue.config.productionTip = false
-const whiteList = ['/home', '/goods', '/officialgoods', '/login', '/register', '/goodsDetails', '/officialgoodsDetails', '/thanks', '/search', '/refreshsearch', '/refreshgoods', '/refreshofficialgoods'] // 不需要登陆的页面
+const whiteList = ['/home', '/goods', '/officialgoods', '/login', '/register', '/goodsDetails', '/officialgoodsDetails', '/thanks', '/search', '/refreshsearch', '/refreshgoods', '/refreshofficialgoods', '/forum', '/forumDetail'] // 不需要登陆的页面
 router.beforeEach(function (to, from, next) {
   let userToken = getStore('token')
   if (userToken === null) {
