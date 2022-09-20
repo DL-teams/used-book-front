@@ -287,7 +287,7 @@
       // 登陆时获取一次购物车商品
       _getCartList () {
         getCartList({userId: getStore('userId')}).then(res => {
-          if (res.success === true) {
+          if (res.code === 200) {
             setStore('buyCart', res.result)
           }
           // 重新初始化一次本地数据

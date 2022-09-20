@@ -165,7 +165,8 @@
         userId: '',
         orderTotal: 0,
         submit: false,
-        submitOrder: '提交订单'
+        submitOrder: '提交订单',
+        category: -1
       }
     },
     computed: {
@@ -263,12 +264,24 @@
           orderTotal: this.orderTotal
         }
         submitOrder(params).then(res => {
-          if (res.code === 200) {
-            this.payment(res.result)
-          } else {
-            this.message(res.message)
+          if (res.result === -2) {
+            this.$notify({
+              title: '提示',
+              message: '积分不足，无法购买官方商品',
+              type: 'warning'
+            })
             this.submitOrder = '提交订单'
             this.submit = false
+          } else if (res.result === -3) {
+            this.$notify({
+              title: '提示',
+              message: '余额不足，无法购买商品',
+              type: 'warning'
+            })
+            this.submitOrder = '提交订单'
+            this.submit = false
+          } else {
+            this.payment(res.result)
           }
         })
       },
@@ -325,10 +338,12 @@
       _productDet (productId) {
         productDet({params: {productId}}).then(res => {
           let item = res.result
+          console.log(item)
           item.checked = '1'
           item.productImg = item.productImageBig
           item.productNum = this.num
           item.productPrice = item.salePrice
+          this.category = item.category
           this.cartList.push(item)
         })
       }

@@ -171,8 +171,8 @@
             this.orderStatus = 2
           } else if (res.result.orderStatus === '4') {
             this.orderStatus = 5
-          } else if (res.result.orderStatus === '5') {
-            this.orderStatus = -1
+          } else if (res.result.orderStatus === '3') {
+            this.orderStatus = 3
           } else if (res.result.orderStatus === '6') {
             this.orderStatus = 6
           }
