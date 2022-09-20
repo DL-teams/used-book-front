@@ -42,8 +42,7 @@
           {name: '我的订单', path: 'orderList'},
           {name: '收货地址', path: 'addressList'},
           {name: '出售商品', path: 'coupon'},
-          {name: '我的出售', path: 'support'},
-          {name: '以旧换新', path: 'aihuishou'}
+          {name: '我的出售', path: 'support'}
         ],
         editAvatar: true
       }

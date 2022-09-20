@@ -87,3 +87,15 @@ export const getSearch = (params) => {
 export const getQuickSearch = (params) => {
   return http.fetchGet('/goods/quickSearch', params)
 }
+// 添加售卖二手商品
+export const addProduct = (params) => {
+  return http.fetchPost('/bms/product-add', params)
+}
+// 出售商品列表
+export const sellProductList = (params) => {
+  return http.fetchGet('/bms/product-list', params)
+}
+// 删除出售商品
+export const deleteProduct = (params) => {
+  return http.fetchPost('/bms/product-delete', params)
+}
