@@ -31,3 +31,7 @@ export const commentList = (forumId) => {
 export const delComment = (id) => {
   return http.fetchPost('/users/comments-remove?id=' + id)
 }
+// 打卡
+export const checkIn = (id) => {
+  return http.fetchGet('/users/check-in?userId=' + id)
+}

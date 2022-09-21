@@ -18,9 +18,6 @@
               </div>
             </el-card>
           </div>
-<!--          <ul class="infinite-list" v-infinite-scroll="load" style="overflow:auto">-->
-<!--            <li v-for="i in count" class="infinite-list-item">{{ i }}</li>-->
-<!--          </ul>-->
         </el-tab-pane>
         <el-tab-pane label="论坛" name="second">
           <div v-for="forum in forumData" :key="forum.id" style="margin-top: 5px">
@@ -61,11 +58,12 @@
     <el-card class="box-card-right">
       <el-button @click="add(0)">新建论坛帖子</el-button>
       <el-button @click="add(1)">新建求购贴</el-button>
+      <el-button @click="checkIn">打卡</el-button>
     </el-card>
   </div>
 </template>
 <script>
-import {delForum, forumList} from '../../api/forum'
+import {checkIn, delForum, forumList} from '../../api/forum'
 import {userInfo} from '../../api'
 import {getStore} from '../../utils/storage'
 
@@ -86,6 +84,11 @@ export default {
     }
   },
   mounted () {
+    // 验证是否需要刷新
+    if (this.$route.query.isReload !== undefined && this.$route.query.isReload === true) {
+      this.$router.go(0)
+    }
+
     this.params.params.token = getStore('token')
     if (this.params.params.token === null) {
       this.params.params.token = 1
@@ -145,6 +148,19 @@ export default {
           })
         } else {
           this.$message.error('删除失败')
+        }
+      })
+    },
+    checkIn () {
+      checkIn(this.userId).then(response => {
+        if (response.code === 200) {
+          this.$message({
+            message: '打卡成功',
+            type: 'success'
+          })
+          this.$router.go(0)
+        } else {
+          this.$message.error('打卡失败')
         }
       })
     }

@@ -113,7 +113,8 @@ export default {
                 type: 'success'
               })
               this.$router.push({
-                path: '/forum'
+                path: '/forum',
+                query: {isReload: true}
               })
             } else {
               this.$message.error('发布失败')

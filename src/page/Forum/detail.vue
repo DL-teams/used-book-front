@@ -78,6 +78,19 @@ export default {
     this.comment.forumId = this.$route.query.id
     this.detail(this.$route.query.id)
     this.commentList(this.$route.query.id)
+    // check login
+    this.params.params.token = getStore('token')
+    if (this.params.params.token === null) {
+      this.params.params.token = 1
+    }
+    userInfo(this.params).then(response => {
+      if (response.result.state === 1) {
+        this.comment.userId = response.result.id
+        this.userId = response.result.id
+        this.comment.userName = response.result.username
+        this.comment.userImg = response.result.file
+      }
+    })
   },
   methods: {
     removeComment (comment) {
@@ -108,11 +121,11 @@ export default {
           this.comment.userImg = response.result.file
           addComment(this.comment).then(response => {
             if (response.code === 200) {
-              this.commentList(this.comment.forumId)
               this.$message({
                 message: '回复成功',
                 type: 'success'
               })
+              this.$router.go(0)
             } else {
               this.$message.error('回复失败')
             }
