@@ -3,11 +3,11 @@
     <div class="container">
 
       <div class="copyright">
-        <h4 class="content-c2">Copyright ©2017, exrick.cn Co., Ltd. All Rights Reserved.本网站设计内容大部分属锤子科技</h4>
+        <h4 class="content-c2">Copyright ©2017, exrick.cn Co., Ltd. All Rights Reserved.</h4>
         <ul class="privacy">
           <li class="content-c1"><a class="content-c0" @click="open1">法律声明</a></li>
           <li class="content-c1"><a class="content-c0" @click="open2">隐私条款</a></li>
-          <li class="content-c1"><a class="content-c0" target="_blank" href="https://github.com/Exrick">开发者中心</a></li>
+          <li class="content-c1"><a class="content-c0">开发者中心</a></li>
         </ul>
       </div>
       <div class="cop">
@@ -55,7 +55,7 @@
       open5 () {
         this.$notify({
           title: '送货政策',
-          message: '本网站所有商品购买后不会发货，将用作捐赠',
+          message: '本网站所有商品购买后不会发货',
           type: 'warning'
         })
       }

@@ -10,26 +10,9 @@
           </div>
           <div class="right-box">
             <div class="nav-list">
-              <div v-if="this.$store.state.searchPage !== -1">
-                <el-autocomplete
-                  placeholder="请输入商品信息"
-                  icon="search"
-                  v-model="input"
-                  minlength=1
-                  maxlength=100
-                  @select="handleSelect"
-                  :on-icon-click="handleIconClick"
-                  @keydown.enter.native="handleIconClick">
-                </el-autocomplete>
-              </div>
               <router-link to="/goods"><a @click="changePage(2)">二手商品</a></router-link>
               <router-link to="/officialgoods"><a @click="changePage(4)">官方商品</a></router-link>
               <router-link to="/forum"><a @click="changePage(5)">论坛</a></router-link>
-              <!-- <router-link to="/">Smartisan M1 / M1L</router-link>
-              <router-link to="/">Smartisan OS</router-link>
-              <router-link to="/">欢喜云</router-link>
-              <router-link to="/">应用下载</router-link>
-              <router-link to="/">官方论坛</router-link> -->
             </div>
             <div class="nav-aside" ref="aside" :class="{fixed:st}">
               <div class="user pr">
@@ -157,7 +140,6 @@
   import { loginOut, openSignIn, updateBalance } from '/api/index'
   import { setStore, getStore, removeStore } from '/utils/storage'
   import { MessageBox } from 'element-ui'
-  // import store from '../store/'
   import 'element-ui/lib/theme-default/index.css'
   export default{
     data () {
@@ -348,6 +330,16 @@
         window.open('//' + window.location.host + '/#/goodsDetails?productId=' + productId)
       },
       openSignIn () {
+        let userInfo = JSON.parse(getStore('userInfo'))
+        console.log(userInfo)
+        if (userInfo.info.isSignIn) {
+          this.$notify({
+            title: '提示',
+            message: '您今天已签到过了',
+            type: 'warning'
+          })
+          return
+        }
         MessageBox.alert('您以成功签到，获得20积分', '线上签到', {
           confirmButtonText: '确定',
           callback: action => {

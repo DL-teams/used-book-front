@@ -152,13 +152,29 @@ export default {
       })
     },
     checkIn () {
+      let userToken = getStore('token')
+      if (userToken === null) {
+        userToken = 1
+      }
+      let params = {
+        params: {
+          token: userToken
+        }
+      }
+      userInfo(params).then(res => {
+        if (res.result.state !== 1) { // 没登录
+          this.$router.push('/login')
+        }
+      })
       checkIn(this.userId).then(response => {
         if (response.code === 200) {
           this.$message({
             message: '打卡成功',
             type: 'success'
           })
-          this.$router.go(0)
+          setTimeout(function () {
+            window.location.reload()
+          }, 500)
         } else {
           this.$message.error('打卡失败')
         }

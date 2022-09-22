@@ -5,16 +5,16 @@
         <div v-loading="loading" element-loading-text="加载中..." v-for="(item,i) in productList" :key="i" class="text item" style="background: #EEE;">
           <div style="height: 120px;background-color: white;">
             <div style="float: left;margin: 10px 10px;">
-              <img style="height: 100px;width: 100px;border-radius:5px" src="https://fuss10.elemecdn.com/e/5d/4a731a90594a4af544c0c25941171jpeg.jpeg">
+              <img style="height: 100px;width: 100px;border-radius:5px" :src="item.imgFront">
             </div>
-            <div style="float: left;margin-left:50px;margin-top: 40px">
+            <div style="float: left;margin-left:50px;margin-top: 20px;width: 130px">
               <div>{{ item.name }}</div>
               <div style="margin-top: 10px">{{ item.subName }}</div>
             </div>
-            <div style="float: left;margin-left: 150px;margin-top: 50px">
+            <div style="float: left;margin-left: 100px;margin-top: 50px;width: 30px">
               <div>{{ item.price }}</div>
             </div>
-            <div style="float: left;margin-left: 130px;margin-top: 50px">
+            <div style="float: left;margin-left: 80px;margin-top: 50px;width: 220px">
               <div>{{ item.createTime }}</div>
             </div>
             <div style="float: left;margin-left: 100px;margin-top: 40px">

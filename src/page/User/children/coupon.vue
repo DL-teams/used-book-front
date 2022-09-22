@@ -113,6 +113,7 @@
               message: '添加商品成功',
               type: 'success'
             })
+            this.$router.push('/user/support')
           }
         })
       },
